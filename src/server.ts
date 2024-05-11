@@ -1,42 +1,40 @@
-import cors from "cors";
-import express, { Application, NextFunction, Request, Response } from "express";
-import httpStatus from "http-status";
+import mongoose from "mongoose";
 import config from "./Config";
-import router from "./app/routes";
-import GlobalErrorHandler from "./Error/GlobalErrorHandler";
+import app from "./app";
+import { Server } from "http";
 
-const app: Application = express();
+let server: Server;
 
-app.use(cors());
+const BootstrapApp = async () => {
+  try {
+    await mongoose.connect(config.database_url as string);
+    console.info(`🗂️ MongoDB Server connected`);
+  } catch (error) {
+    console.warn(error);
+  }
+  const exitHandler = () => {
+    if (server) {
+      server.close(() => {
+        console.warn("Server closed");
+      });
+    }
+    process.exit(1);
+  };
 
-//parser
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  const unexpectedErrorHandler = (error: unknown) => {
+    console.warn(error);
+    exitHandler();
+  };
 
-app.use("/api/v1", router);
+  process.on("uncaughtException", unexpectedErrorHandler);
+  process.on("unhandledRejection", unexpectedErrorHandler);
 
-app.get("/", (req, res) => {
-  res.send(
-    `<h1 style='text-align: center; padding: 20px; color:green'>${config.app_name} Server is Running 🌱!</h1>`
-  );
-});
-
-//global error handler
-app.use(GlobalErrorHandler);
-
-//handle not found
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.status(httpStatus.NOT_FOUND).json({
-    success: false,
-    message: "Not Found",
-    errorMessages: [
-      {
-        path: req.originalUrl,
-        message: "API Not Found",
-      },
-    ],
+  process.on("SIGTERM", () => {
+    console.info("SIGTERM received");
+    if (server) {
+      server.close();
+    }
   });
-  next();
-});
+};
 
-export default app;
+export default BootstrapApp;

@@ -8,7 +8,7 @@ router.get(
         res.send({
             success: true,
             message: 'All Users',
-            data: []
+            data: ["Hello Musab"]
         });
         next()
     }

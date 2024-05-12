@@ -1,6 +1,9 @@
+export const roomSearchAbleField: string[] = [
+  "roomNo",
+  "category",
+  "occupancy",
+  "price",
+];
 
-
-export const roomSearchAbleField:string[]= [ "" ];
-
-export const roomFilterAbleField:string[]= [ "search" ];
+export const roomFilterAbleField:string[]= [ "search", "roomNo",  "category", "status"];
 

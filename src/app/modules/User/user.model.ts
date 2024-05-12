@@ -1,5 +1,5 @@
 import mongoose, { Schema, model } from "mongoose";
-import { TUser } from "./user.interfaces";
+import { TUser, UserModel } from "./user.interfaces";
 import bcrypt from "bcrypt";
 import Config from "../../../Config";
 
@@ -55,12 +55,11 @@ userSchema.pre<TUser>("save", async function (next) {
   next();
 });
 
-userSchema.methods.comparePassword = function (
-  password: string | Buffer,
-  hash: string
-) {
-  const isPasswordValid = bcrypt.compareSync(password, hash);
-  return isPasswordValid;
+userSchema.statics.comparePassword = async function (
+  givenPassword: string,
+  savedPassword: string
+): Promise<boolean> {
+  return await bcrypt.compare(givenPassword, savedPassword);
 };
 
-export const User = model<TUser>("user", userSchema);
+export const User = model<TUser, UserModel>("user", userSchema);

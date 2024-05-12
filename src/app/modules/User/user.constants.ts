@@ -1,6 +1,13 @@
 
+export const userSearchableFields: string[] = [
+  "email",
+  "role",
+];
 
-export const userSearchAbleField:string[]= [ "" ];
-
-export const userFilterAbleField:string[]= [ "search" ];
-
+export const userFilterableFields: string[] = [
+  "search",
+  "name",
+  "role",
+  "email",
+  "address",
+];

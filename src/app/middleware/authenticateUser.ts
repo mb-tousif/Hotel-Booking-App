@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status";
 import { JwtPayload, Secret } from "jsonwebtoken";
-import config from "../../config";
 import { jwtHelpers } from "../../utils/jwtHelper";
 import CustomApiError from "../../Error/customErrorHandler";
+import Config from "../../Config";
 
 declare global {
   namespace Express {
@@ -25,14 +25,9 @@ const AuthenticateUser = () => async (req: Request, res: Response, next: NextFun
       }
       // verify token
       let verifiedUser: JwtPayload | null = null;
-      verifiedUser = jwtHelpers.verifyToken(
-        token,
-        config.jwt.secret as Secret,
-        (err) => {
-          if (err) throw new CustomApiError(httpStatus.UNAUTHORIZED, "Authentication failed 💥");
-          req.user = verifiedUser;
-        }
-      );
+      verifiedUser = jwtHelpers.verifyToken(token, Config.jwt.secret as Secret);
+      req.user = verifiedUser;
+      next();
     } catch (error) {
       next(error);
     }

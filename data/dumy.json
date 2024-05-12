@@ -1,0 +1,20 @@
+[
+    {
+      "name": "Jane Doe",
+      "email": "jane@example.com",
+      "password": "jane@24",
+      "role": "user",
+      "gender": "Female",
+      "contactNo": "0987654321",
+      "address": "456 Elm St, Town"
+    },
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "john@24",
+      "role": "admin",
+      "gender": "male",
+      "contactNo": "1234567890",
+      "address": "123 Main St, City"
+    }
+]

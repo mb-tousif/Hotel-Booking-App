@@ -1,14 +1,14 @@
-import mongoose, { Schema, model } from "mongoose";
-import { TBooking } from "./booking.interfaces";
+import { Schema, model } from "mongoose";
+import { BookingModel, TBooking } from "./booking.interfaces";
 
 const bookingSchema = new Schema<TBooking>(
   {
     room: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "room",
     },
     user: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "user"
     },
     date: {
@@ -25,3 +25,5 @@ const bookingSchema = new Schema<TBooking>(
     timestamps: true,
   }
 );
+
+export const Booking = model<TBooking, BookingModel>("booking", bookingSchema);

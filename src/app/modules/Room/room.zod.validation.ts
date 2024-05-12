@@ -2,35 +2,42 @@ import { z } from "zod";
 
 const postValidation = z.object({
   body: z.object({
-    roomNo: z.enum([
-      "S101",
-      "S102",
-      "S103",
-      "S104",
-      "S105",
-      "D201",
-      "D202",
-      "D203",
-      "D204",
-      "D205",
-      "F301",
-      "F302",
-      "F303",
-      "F304",
-      "F305",
-      "SU401",
-      "SU402",
-      "SU403",
-      "SU404",
-      "SU405",
-    ]),
+    roomNo: z.enum(
+      [
+        "S101",
+        "S102",
+        "S103",
+        "S104",
+        "S105",
+        "D201",
+        "D202",
+        "D203",
+        "D204",
+        "D205",
+        "F301",
+        "F302",
+        "F303",
+        "F304",
+        "F305",
+        "SU401",
+        "SU402",
+        "SU403",
+        "SU404",
+        "SU405",
+      ],
+      {
+        required_error: "Room Number is required or invalid",
+      }
+    ),
     occupancy: z.number({
       required_error: "Occupancy Pax is required",
     }),
     price: z.number({
       required_error: "Room price is missing",
     }),
-    category: z.enum(["Single", "Double", "Family", "Suite"]),
+    category: z.enum(["Single", "Double", "Family", "Suite"], {
+      required_error: "Room category is required or invalid",
+    }),
     amenities: z
       .enum([
         "Complementary Breakfast",
@@ -42,10 +49,11 @@ const postValidation = z.object({
         "Airport Drop",
         "Laundry",
         "Spa",
-        "Bar",
-        "Restaurant",
+        "TV",
+        "Mini Bar",
+        "Jacuzzi",
       ])
-      .optional(),
+      .optional().array(),
     status: z
       .enum(["Out of Order", "Ready", "Checked In", "Checked Out", "Booked"])
       .optional(),
@@ -93,8 +101,9 @@ const updateValidation = z.object({
         "Airport Drop",
         "Laundry",
         "Spa",
-        "Bar",
-        "Restaurant",
+        "TV",
+        "Mini Bar",
+        "Jacuzzi",
       ])
       .optional(),
     status: z

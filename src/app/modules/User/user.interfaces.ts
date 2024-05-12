@@ -1,3 +1,4 @@
+import { Model } from "mongoose";
 
 export type TUserFilterableOptions = {
     search?: string;
@@ -14,3 +15,10 @@ export type TUser = {
   address?: string;
   booking?: string[];
 };
+
+export type UserModel = {
+  comparePassword(
+    givenPassword: string,
+    savedPassword: string
+  ): Promise<boolean>;
+} & Model<TUser>;

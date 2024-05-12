@@ -65,9 +65,42 @@ const getAllRooms = async (
   };
 };
 
+// Get room by id from the database
+const getRoomById = async (id: string) => {
+    const room = await Room.findById({ _id: id }).populate("booking");
+    if (!room) {
+        throw new CustomApiError(httpStatus.NOT_FOUND, "Room not found");
+    }
+    return room;
+}
+
+// update room by id
+const updateRoomById = async (id: string, payload: TRoom) => {
+    const room = await Room.findByIdAndUpdate({ _id: id }, payload, {
+        new: true,
+    });
+    if (!room) {
+        throw new CustomApiError(httpStatus.NOT_FOUND, "Room not found to update");
+    }
+    return room;
+}
+
+// delete room by id
+const deleteRoomById = async (id: string) => {
+    const room = await Room.deleteOne({
+        _id: id,
+    });
+    if (!room) {
+        throw new CustomApiError(httpStatus.NOT_FOUND, "Room not found to delete");
+    }
+    return room;
+}
 
 export const RoomService = {
     createRoom,
-    getAllRooms
+    getAllRooms,
+    getRoomById,
+    updateRoomById,
+    deleteRoomById,
 };
 

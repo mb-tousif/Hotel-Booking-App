@@ -5,7 +5,7 @@ export type TUserFilterableOptions = {
 }
 
 export type TUser = {
-  id?: string;
+  _id?: string;
   name?: string;
   email: string;
   password: string;

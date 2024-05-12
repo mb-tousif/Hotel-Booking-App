@@ -1,4 +1,4 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 import { RoomModel, TRoom } from "./room.interfaces";
 
 const roomSchema = new Schema<TRoom>(
@@ -55,7 +55,7 @@ const roomSchema = new Schema<TRoom>(
     },
     booking: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "booking",
       },
     ],

@@ -10,7 +10,7 @@ export type TRoomFilterableOptions = {
 }
 
 export type TRoom = {
-    id?: string;
+    _id?: string;
     roomNo: string;
     occupancy: number;
     price: number;

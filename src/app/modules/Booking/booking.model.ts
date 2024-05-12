@@ -3,11 +3,11 @@ import { BookingModel, TBooking } from "./booking.interfaces";
 
 const bookingSchema = new Schema<TBooking>(
   {
-    room: {
+    roomId: {
       type: Schema.Types.ObjectId,
       ref: "room",
     },
-    user: {
+    userId: {
       type: Schema.Types.ObjectId,
       ref: "user"
     },

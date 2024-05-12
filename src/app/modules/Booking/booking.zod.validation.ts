@@ -2,12 +2,10 @@ import { z } from "zod";
 
 const postValidation = z.object({
   body: z.object({
-    room: z.string({
+    roomId: z.string({
       required_error: "Room id is required",
     }),
-    user: z.string({
-      required_error: "User id is required",
-    }),
+    userId: z.string().optional(),
     date: z.string({
       required_error: "Booking date is required",
     }),
@@ -15,16 +13,15 @@ const postValidation = z.object({
   }),
 });
 
-const updateValidation = z.object({
+const cancelValidation = z.object({
   body: z.object({
-    room: z.string().optional(),
-    user: z.string().optional(),
-    date: z.string().optional(),
-    status: z.enum(["Booked", "Cancelled"]).optional(),
+    roomId: z.string({
+      required_error: "Room id is required",
+    })
   }),
 });
 
 export const BookingValidation = {
     postValidation,
-    updateValidation
+    cancelValidation
 }

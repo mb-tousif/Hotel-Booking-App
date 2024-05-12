@@ -2,12 +2,14 @@ import mongoose, { Model } from "mongoose";
 
 export type TBookingFilterableOptions = {
     search?: string;
+    status?: string;
+    date?: string;
 }
 
 export type TBooking = {
-  id?: string;
-  room?: string;
-  user?: string;
+  _id?: string;
+  roomId?: string;
+  userId?: string;
   date: string;
   status: string;
 };

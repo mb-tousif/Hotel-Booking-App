@@ -18,7 +18,7 @@ type IReturn = {
 export const PaginationHandler = (options: IOptions): IReturn => {
   const { page = 1, limit = 5 } = options;
   const skip = (page - 1) * limit;
-  const sortBy = options.sortBy || "userId";
+  const sortBy = options.sortBy || "createdAt";
   const sortOrder = options.sortOrder || "asc";
   return {
     page,

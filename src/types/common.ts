@@ -23,3 +23,9 @@ export type IPaginationOptions = {
 };
 
 export const paginationFields = ["page", "limit", "sortBy", "sortOrder"];
+
+export interface IBookingInfo {
+  roomNo: string;
+  date: string;
+  status: string;
+}

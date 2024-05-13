@@ -1,6 +1,7 @@
 # Hotel Booking App Backend
 
-This is the backend for the hotel booking app. Which is a simple hotel booking app that allows users to book hotel rooms.
+This is a backend project for the hotel booking app. Designed and implemented RESTful endpoints for user authentication, managing rooms, booking rooms, checking in, checking out, and cancelling bookings.
+
 ---
 
 ## Features
@@ -24,3 +25,34 @@ This is the backend for the hotel booking app. Which is a simple hotel booking a
 - [x] Nodemailer
 - [x] Zod
 - [x] Docker
+
+---
+
+## How to run the project
+
+- [x] Clone the repository
+- [x] Run `npm install` to install dependencies
+- [x] Create a `.env` file and add the following environment variables:
+  - `PORT`
+  - `DATABASE_URL`
+  - `APP_NAME`
+  - `SALT_ROUNDS`
+  - `JWT_SECRET`
+  - `JWT_EXPIRES_IN`
+  - `EMAIL_USER`
+  - `EMAIL_PASSWORD`
+  - `EMAIL_HOST`
+
+- [x] Run `npm run dev` to start the development server
+- [x] Run `npm run build` to build the project
+
+### For Docker
+
+- [x] Run `docker compose up` to start the application
+- [x] Your application will be available at http://localhost:5000
+
+---
+
+## API Documentation
+
+- [x] [Swagger](http://localhost:5000/api-docs/)

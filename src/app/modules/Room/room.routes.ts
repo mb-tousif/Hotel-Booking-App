@@ -6,9 +6,17 @@ import { RoomValidation } from "./room.zod.validation";
 
 const router = express.Router();
 
-router.get("/all-rooms", AuthenticateUser(), RoomController.getAllRooms);
+router.get(
+  "/all-rooms", 
+  AuthenticateUser(), 
+  RoomController.getAllRooms
+);
 
-router.get("/:id", AuthenticateUser(), RoomController.getRoomById);
+router.get(
+  "/:id", 
+  AuthenticateUser(), 
+  RoomController.getRoomById
+);
 
 router.post(
   "/create-room",

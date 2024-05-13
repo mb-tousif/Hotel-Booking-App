@@ -1,3 +1,6 @@
 node_modules
 generateFile.ts
 .env
+data
+.gitignore
+.git

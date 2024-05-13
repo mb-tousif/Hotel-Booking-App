@@ -5,6 +5,8 @@ import config from "./Config";
 import router from "./app/routes";
 import GlobalErrorHandler from "./Error/globalErrorHandler";
 import BootstrapApp from "./server";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger-output.json";
 
 const app: Application = express();
 
@@ -23,6 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1", router);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 //global error handler
 app.use(GlobalErrorHandler);
 

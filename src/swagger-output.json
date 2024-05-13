@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Documentation",
+    "description": "Hotel Booking App API"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Endpoints"
+    },
+    {
+      "name": "User",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Room",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Booking",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-KEY",
+      "description": "Access Token Authentication"
+    }
+  },
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users/create-user": {
+      "post": {
+        "tags": ["User"]
+      }
+    },
+    "/users/all-users": {
+      "get": {
+        "tags": ["User"]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"]
+      }
+    },
+    "/auth/reset-password": {
+      "post": {
+        "tags": ["Auth"]
+      }
+    },
+    "/rooms/all-rooms": {
+      "get": {
+        "tags": ["Room"]
+      }
+    },
+    "/rooms/{_id}": {
+      "get": {
+        "tags": ["Room"]
+      }
+    },
+    "/rooms/create-room": {
+      "post": {
+        "tags": ["Room"]
+      }
+    },
+    "/rooms/{id}": {
+      "patch": {
+        "tags": ["Room"]
+      }
+    },
+    "/rooms/{ID}": {
+      "delete": {
+        "tags": ["Room"]
+      }
+    },
+    "/bookings/all-bookings": {
+      "get": {
+        "tags": ["Booking"]
+      }
+    },
+    "/bookings/create-booking": {
+      "post": {
+        "tags": ["Booking"]
+      }
+    },
+    "/bookings": {
+      "post": {
+        "tags": ["Booking"]
+      }
+    }
+  }
+}
+
+

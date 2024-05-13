@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./dist/app.js",
     "dev": "nodemon ./src/app.ts",
+    "swagger": "ts-node ./src/swagger.ts",
     "build": "tsc"
   },
   "keywords": [],
@@ -26,8 +27,13 @@
     "mongodb": "^6.6.1",
     "mongoose": "^8.3.4",
     "nodemailer": "^6.9.13",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/swagger-ui-express": "^4.1.6"
   }
 }

@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV
+      - PORT
+      - DATABASE_URL
+      - APP_NAME
+      - SALT_ROUNDS
+      - JWT_SECRET
+      - JWT_EXPIRES_IN
+      - EMAIL_USER
+      - EMAIL_PASSWORD
+      - EMAIL_HOST
+    ports:
+      - 5000:5000
